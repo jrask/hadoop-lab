@@ -1,4 +1,4 @@
-package com.jayway.mapred;
+package com.jayway.hadoop.demo;
 
 import java.io.IOException;
 
