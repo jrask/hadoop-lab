@@ -1,5 +1,7 @@
 package com.jayway.hadoop.util;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
@@ -19,7 +21,7 @@ import org.apache.hadoop.io.Text;
  */
 public class IkeaLogUtils {
 
-	
+	public static DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss,S");
 
 	static final Pattern pattern = Pattern.compile("^(\\d{4}-\\d{2}-\\d{2}\\s+\\d{2}:\\d{2}:\\d{2},\\d{3})\\s(\\[.*\\])\\s(DEBUG|INFO|WARN|ERROR|FATAL)\\s{1,2}(.*)\\s{2}-\\s(.*)(%%%)$",
 			Pattern.DOTALL);

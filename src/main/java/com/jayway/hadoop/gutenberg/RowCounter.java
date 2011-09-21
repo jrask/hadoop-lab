@@ -1,4 +1,4 @@
-package com.jayway.hadoop.demo;
+package com.jayway.hadoop.gutenberg;
 
 import java.io.IOException;
 
@@ -14,12 +14,11 @@ import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 /**
- * Very simple map/reduce program that counts the maximum length that a row can have for each file.
+ * <p>TASK: Create a program that calculates the maximum length of a row for each file</p>
  * 
- * The result is:
+ * Execute: bin/hadoop jar ¤{path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop.demo.RowCounter /user/hduser/gutenberg /user/hduser/¤{you}/gutenberg-out
  * 
- * rask:hadoop hduser$ bin/hadoop dfs -cat /Users/hduser/gutenberg-output13/part-r-00000
- * 2011-09-16 13:39:37.086 java[17816:1b03] Unable to load realm info from SCDynamicStore
+ * Expected output:
  * notebooks.txt	95
  * ouline_of_science.txt	80
  * ulysses.txt	73
