@@ -41,12 +41,6 @@ Open and add the stuff below to your conf/core-site.xml
 <property> 
 	<name>hadoop.tmp.dir</name> 
 	<value>/app/hadoop/tmp</value> 
-	<description>A base for other temporary directories.</description>
-</property>
-
-<property> 
-	<name>hadoop.tmp.dir</name> 
-	<value>/app/hadoop/tmp</value> 
 	<description>A base for other temporary directories.</description> 
 </property>
 
