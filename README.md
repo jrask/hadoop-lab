@@ -7,23 +7,23 @@ you follow our setup guide.
 
 Prereq: Java6 + JAVA_HOME satta
 
-1. Skapa en användare som heter hduser (MANDATORY) och en grupp som heter hadoop.
+1. Skapa en anv√§ndare som heter hduser (MANDATORY) och en grupp som heter hadoop.
   
-2. Ladda ner hadoop 0.20.204.X - current beta version från http://hadoop.apache.org/common/releases.html#Download
+2. Ladda ner hadoop 0.20.204.X - current beta version fr√•n http://hadoop.apache.org/common/releases.html#Download
 
-3. Packa upp (installera) hadoop under /usr/local/hadoop-0.20.204.x och gör en symläng (ln -s hadoop-0.20.204.x hadoop).
-    Det är VIKTIGT att hadoop ligger under '/usr/local/hadoop´
+3. Packa upp (installera) hadoop under /usr/local/hadoop-0.20.204.x och g√∂r en syml√§nk (ln -s hadoop-0.20.204.x hadoop).
+    Det √§r VIKTIGT att hadoop ligger under '/usr/local/hadoop
 
-  "Anledningen till att hduser + en symlänk till /usr/local/hadoop (byt ej namn på katalogen) är att
-  när vi kör igång klustret så kommer en (min) maskin att vara master så den kan ssh:a in på era
-  maskiner och köra igång det som behövs köras igång."
+  "Anledningen till att hduser + en syml√§nk till /usr/local/hadoop (byt ej namn p√• katalogen) √§r att
+  n√§r vi k√∂r ig√•ng klustret s√• kommer en (min) maskin att vara master s√• den kan ssh:a in p√• era
+  maskiner och k√∂ra ig√•ng det som beh√∂vs k√∂ras ig√•ng."
   
-  "Om någon kör vmware/virtualbox så är det viktigt att den konfas så att den kan nås via andra maskiner i klustret"
+  "Om n√•gon k√∂r vmware/virtualbox s√• √§r det viktigt att den konfas s√• att den kan n√•s via andra maskiner i klustret"
 
-4. I /usr/local/hadoop/conf/hadoop-env.sh behöver du sätta JAVA_HOME igen.
+4. I /usr/local/hadoop/conf/hadoop-env.sh beh√∂ver du s√§tta JAVA_HOME igen.
 
-5. Skapa katalogen /app/hadoop/tmp och ge hduser access till tmp mappen. Ja, det är en konstig path men det är confat
-   för det nu...
+5. Skapa katalogen /app/hadoop/tmp och ge hduser access till tmp mappen. Du kan √§ven anv√§nda tex /tmp/hadoop men isf
+   f√•r du ej gl√∂mma att √§ndra i conf/core-site.xml nedan.
    
    $ sudo mkdir -p /app/hadoop/tmp
    $ sudo chown hduser:hadoop /app/hadoop/tmp
@@ -90,6 +90,7 @@ export PATH=$PATH:$HADOOP_HOME/bin
 8. Work In Progress
 
 
+# All lab instructions are in progress
 #Lab instructions
 
 ##HDFS
@@ -118,7 +119,7 @@ Namenode -  http://master:50070
  
 Jobtracker - http://master:50030
 
-Tasktracker - http://localhost:50060 (eller någon annan dator i klustret, du når den även från jobtrackern)
+Tasktracker - http://localhost:50060 (eller nÔøΩgon annan dator i klustret, du nÔøΩr den ÔøΩven frÔøΩn jobtrackern)
 
  But each tasktracker is also available from the jobtracker ui 
 
@@ -138,7 +139,7 @@ Under /user/hduser/gutenberg are three text books that we will use in this examp
  ulysses.txt	73
 
  
-Execute: bin/hadoop jar §{path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop.demo.RowCounter /user/hduser/gutenberg /user/hduser/§{you}/lab1-out
+Execute: bin/hadoop jar ÔøΩ{path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop.demo.RowCounter /user/hduser/gutenberg /user/hduser/ÔøΩ{you}/lab1-out
 
 NOTE: You cannot use the same result directory twice, remove it or use a new directory with i.e a number appended to dirname  
   
