@@ -34,11 +34,13 @@ sudo chmod 750 /app/hadoop/tmp
 ```
   - Edit .bashrc (.profile)
 
+```shell
 export HADOOP_HOME=/usr/local/hadoop
 
 export JAVA_HOME=/usr/lib/jvm/java-6-sun (you should have done this already)
 
 export PATH=$PATH:$HADOOP_HOME/bin
+```
 
  -  Konfiguration
 
