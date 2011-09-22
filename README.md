@@ -117,8 +117,6 @@ master: stopping secondarynamenode
 
 Do not worry if it does not work, we will solve the rest on friday!
 
-
-# All lab instructions are in progress
 #Lab instructions
 
 ##HDFS
@@ -160,21 +158,30 @@ Tasktracker - http://localhost:50060 (eller n�gon annan dator i klustret, du n
 
 Under /user/hduser/gutenberg are three text books that we will use in this example
 
- - Open com.jayway.hadoop.demo.RowCounter.java
+Open com.jayway.hadoop.demo.RowLengthCounter.java and follow the instructions.
  
- Finish the mapper and reducer code so that it produces this output:
- 
- notebooks.txt	95
- outline_of_science.txt	80
- ulysses.txt	73
+Finish the mapper and reducer code so that it produces this output:
 
- 
-Execute: bin/hadoop jar �{path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop.demo.RowCounter /user/hduser/gutenberg /user/hduser/�{you}/lab1-out
+	notebooks.txt	95
+	outline_of_science.txt	80
+	ulysses.txt	73
+
+
+To run the job (due to permissions you might have to cp the jar file and chmod it)
+
+```shell
+mvn clean install
+bin/hadoop jar ${path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop.demo.RowLengthCounter /user/hduser/gutenberg /user/hduser/${you}/lab1-out
+```
 
 NOTE: You cannot use the same result directory twice, remove it or use a new directory with i.e a number appended to dirname  
+
+Use command utils or Web UI:s to verify your results
+
   
-  
-### 1.b) Extra assignment: Write a program that counts the occurrence of each word in the files.
+### 1.b) Extra assignment (Skip this, goto next)
+
+Write a program that counts the occurrence of each word in the files.
 
 Should produce something like this:
 
@@ -183,48 +190,54 @@ Should produce something like this:
 	or		343 
 
 
-### 2.a)  Write a program that outputs Logtype and count
+### 2.a)  Write a program that outputs Logtype and count from a log4j file
 
- ERROR	678
- WARN	115150
+	ERROR	678
+ 	WARN	115150
  
-Edit com.jayway.hadoop.ikealog.LogTypeCounter
+Open com.jayway.hadoop.ikealog.LogTypeCounter
 
 There is a logfile that you should use under  /user/hduser/ikealogs
 
- bin/hadoop jar ${path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop.ikealog.LogTypeCounter /user/hduser/ikealogs /user/hduser/{you}/ikealogs-out 
- 
-### 2.b) This assignment includes two MapReduce jobs;
-     First, open LogTypePerDateCounter. Finish this program so that it outputs date, logtype and count.
+```shell
+bin/hadoop jar ${path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop.ikealog.LogTypeCounter /user/hduser/ikealogs /user/hduser/{you}/ikealogs-lab1-out 
+```
+
+### 2.b) Write two jobs where the second takes the output of the first as input
+
+First, open LogTypePerDateCounter. Finish this program so that it outputs date, logtype and count.
      
-    20110519	ERROR	29
+   	20110519	ERROR	29
 	20110519	WARN	29
 	20110520	ERROR	203
 	20110520	WARN	44333
-	20110521	ERROR	190
-	20110521	WARN	52872
-	20110522	ERROR	184
-	20110522	WARN	1144
-	20110523	ERROR	72
-	20110523	WARN	16772
-	
-	Next, open LogTypePerWeekdayCounter. Finish the program so that it can process the output from the previous program
-	and calculate the number of errors and warnings per weekday.
+	...
+	...
+
+Use the same directory as input as in 1.a but use a different output dir.
+
+Next, open LogTypePerWeekdayCounter. Finish the program so that it can process the output from the previous program
+and calculate the number of errors and warnings per weekday.
 	
 	Fri ERROR	203
 	Fri WARN	44333
 	Mon ERROR	72
 	Mon WARN	16772
-	Sat ERROR	190
-	Sat WARN	52872
-	Sun ERROR	184
-	Sun WARN	1144
-	Thu ERROR	29
-    Thu WARN	29 
+	...	
+	...
 	
+Use the output file (part-r-00000) from LogTypePerDateCounter as input for this job.
+
+### 2.c) Write a program that can be used to figure out the most problematic class 
+
+The program should output each class with the number of errors
+
+	com.somepackage.SomeClass	345
+	com.somepackage.SomeClass2	200
+	...
+	...
 	
-### 2.c) Write a program that can be used to figure out the most problematic class from the logs, probably the one
-generating the most errors.
+There is no template for this assignment so you have to create a new och change an existing.
 
 ### 3.a) Count the number of words with the Hadoop Streaming utility
 
