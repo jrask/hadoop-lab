@@ -190,9 +190,38 @@ There is a logfile that you should use under  /user/hduser/ikealogs
 	Sun ERROR	184
 	Sun WARN	1144
 	Thu ERROR	29
-	Thu WARN	29 
+    Thu WARN	29 
 	
 	
 ### 2.c) Write a program that can be used to figure out the most problematic class from the logs, probably the one
 generating the most errors.
 
+### 3.a) Hadoop Streaming is a utility that allows you to run map/reduce jobs with any kind of script or executable, that can be run on the cluster (or at least your own computer). The mapper should write tab-separated key-value pairs to standard output. By default the streaming utility will provide the reducer with the key-value pairs sorted by key, instead of providing a list of values. I.e., the reducer must compare the current key with the last key to find the end of the lists.
+
+The biggest advantages with Hadoop Streaming is that it is fast to implement and test. You can also make use of the already existing executables on your cluster. For example find, grep, sed, etc. The mapper and reducer commands can even contain pipes. To test your scripts, just run
+
+cat input | <mapper> | sort | <reducer>
+
+In this assignment we will count the number of occurences for each word of the input. The mapper code in Ruby is:
+
+<code>
+#!/usr/bin/ruby
+
+STDIN.each_line do |l|
+
+  line = l.strip
+  
+  unless line.empty?
+    words = line.split(/\W+/)
+    words.each do |word|
+      puts "#{word.strip}\t1"
+    end
+  end
+end
+</code>
+
+Try to implement a reducer in your own favorite scripting language. There is no need for the reducer to be implemented in Ruby, just because the mapper is.
+
+There is no hadoop command for the streaming utility. Instead you use a jar that comes with the distribution. The -file argument is used to specify which executables that must be sent to the other cluster nodes. When using already existing scripts and executables this argument can be omitted.
+
+bin/hadoop jar $HADOOP_HOME/contrib/streaming/hadoop-streaming-0.20.204.0.jar -mapper <mapper absolute path> -reducer <reducer absolute path> -file <mapper absolute path> -file <reducer absolute path> -input /user/hduser/gutenberg -output <output dir>
