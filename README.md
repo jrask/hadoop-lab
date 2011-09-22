@@ -235,7 +235,7 @@ STDIN.each_line do |l|
   unless line.empty?
     words = line.split(/\W+/)
     words.each do |word|
-      puts "#{word.strip}\t1"
+      puts "#{word}\t1"
     end
   end
 end
