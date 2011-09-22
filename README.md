@@ -37,6 +37,10 @@ sudo chmod 750 /app/hadoop/tmp
 
 Open and add the stuff below to your conf/core-site.xml
 
+```xml
+<hej></hej>
+```
+
 &lt;property&gt;
   &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
   &lt;value&gt;/app/hadoop/tmp&lt;/value&gt;
