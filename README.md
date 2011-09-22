@@ -170,6 +170,7 @@ Finish the mapper and reducer code so that it produces this output:
 
 
 To run the job (due to permissions you might have to cp the jar file and chmod it)
+
 ```shell
 mvn clean install
 bin/hadoop jar ${path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop.demo.RowLengthCounter /user/hduser/gutenberg /user/hduser/${you}/lab1-out
