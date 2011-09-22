@@ -1,5 +1,87 @@
 TODO - Get more logs or create fake logs
 
+# Setup
+
+This site http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/
+has a great step by step guide to how you configure your system. 
+
+
+Prereq: Java6 + JAVA_HOME satta
+
+1. Skapa en användare som heter hduser (MANDATORY) och en grupp som heter hadoop.
+  
+2. Ladda ner hadoop 0.20.204.X - current beta version från http://hadoop.apache.org/common/releases.html#Download
+
+3. Packa upp (installera) hadoop under /usr/local/hadoop-0.20.204.x och gör en symläng (ln -s hadoop-0.20.204.x hadoop).
+    Det är VIKTIGT att hadoop ligger under '/usr/local/hadoop´
+
+  "Anledningen till att hduser + en symlänk till /usr/local/hadoop (byt ej namn på katalogen) är att
+  när vi kör igång klustret så kommer en (min) maskin att vara master så den kan ssh:a in på era
+  maskiner och köra igång det som behövs köras igång."
+  
+  "Om någon kör vmware/virtualbox så är det viktigt att den konfas så att den kan nås via andra maskiner i klustret"
+
+4. I /usr/local/hadoop/conf/hadoop-env.sh behöver du sätta JAVA_HOME igen.
+
+5. Skapa katalogen /app/hadoop/tmp och ge hduser access till tmp mappen. Ja, det är en konstig path men det är confat
+   för det nu...
+   
+   $ sudo mkdir -p /app/hadoop/tmp
+   $ sudo chown hduser:hadoop /app/hadoop/tmp
+   $ sudo chmod 750 /app/hadoop/tmp
+
+6. Konfiguration
+
+6.1 Open and add the stuff below to your conf/core-site.xml
+
+<property>
+  <name>hadoop.tmp.dir</name>
+  <value>/app/hadoop/tmp</value>
+  <description>A base for other temporary directories.</description>
+</property>
+
+<property>
+  <name>fs.default.name</name>
+  <value>hdfs://master:54310</value>
+  <description>The name of the default file system.  A URI whose
+  scheme and authority determine the FileSystem implementation.  The
+  uri's scheme determines the config property (fs.SCHEME.impl) naming
+  the FileSystem implementation class.  The uri's authority is used to
+  determine the host, port, etc. for a filesystem.</description>
+</property>
+
+
+6.2 Open and add the stuff below to your conf/hdfs-site.xml
+
+<property>
+  <name>dfs.replication</name>
+  <value>2</value>
+  <description>Default block replication.
+  The actual number of replications can be specified when the file is created.
+  The default is used if replication is not specified in create time.
+  </description>
+</property>
+<property>
+   <name>dfs.block.size</name>
+   <value>10240000</value>
+</property>
+<property>
+   <name>dfs.http.address</name>
+   <value>master:50070</value>
+</property>
+
+
+6.3 Open and add the stuff below to your conf/mapred-site.xml
+
+<property>
+  <name>mapred.job.tracker</name>
+  <value>master:54311</value>
+  <description>The host and port that the MapReduce job tracker runs
+  at.  If "local", then jobs are run in-process as a single map
+  and reduce task.
+  </description>
+</property>
+
 #Lab instructions
 
 ##HDFS
@@ -28,7 +110,7 @@ Namenode -  http://master:50070
  
 Jobtracker - http://master:50030
 
-Tasktracker - http//localhost:50060
+Tasktracker - http://localhost:50060 (eller någon annan dator i klustret, du når den även från jobtrackern)
 
  But each tasktracker is also available from the jobtracker ui 
 
