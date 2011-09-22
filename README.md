@@ -95,7 +95,11 @@ Open and add the stuff below to your conf/mapred-site.xml
 
 ```
 
- - Rest of setup is Work In Progress. 
+ - Add my (johans) public key to hdusers .ssh/authorized_keys
+
+```shell
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDq/nCxgEsn1MgAevEopbbTnCET9wxqf9iyv0FbisFw/XgXAAk4jOdDPknxYlcNwNt80dC+nyOoqtMOzgHhBPR53h6IJz8aVx0+R/z1igU/MuBJLQ0XpkTNVwcNiN+KeDFILq6I8YGe0ekKgX1Wicdk4WvxjQK4rOrK7affhILbIqZEV6uWxr/DzY202AASPuwJWlPq9ZVKAIAD+E0odDjo+vNGWaA9iW0ifZPVcrAPE/iEMKtL2fptNa4uzFpDHE82uGmt+TmVubhTTdrXm6dDeqV7IX8l8iOm6nTZKF7gVxCnfEEgeGpsJaHLQUHG8ibPTS27/1BchdtmkXVTWKqP hduser@rask.lan
+```
 
 The final setup will be done during friday and saturday. If you are at the office and have done all
 steps please come by me.
