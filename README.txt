@@ -1,10 +1,10 @@
 TODO - Get more logs or create fake logs
 
-Lab instructions
+#Lab instructions
 
-HDFS
+##HDFS
 
-1.) Get to know HDFS
+### Get to know HDFS command utils
 
 Run ./bin/hadoop to get a list of commands that you can use. Test some of the to get a feeling for
 how it works.
@@ -18,7 +18,7 @@ Most frequently used are
 I.e ./bin/hadoop fsck /user/hduser -blocks -files
 
 
-Web UI:s
+### Web UI:s
 
 From here you can browse the filesystem, see each datanode, MapReduce status, result of jobs etc. 
 Just browse through it to get a feeling of what you can find.
@@ -33,9 +33,9 @@ Tasktracker - http//localhost:50060
  But each tasktracker is also available from the jobtracker ui 
 
 
-Map-Reduce Labs
+## Map-Reduce Labs
 
-1.a)  Create a program that calculates the maximum length of a row for each file in a directory
+### 1.a)  Create a program that calculates the maximum length of a row for each file in a directory
 
 Under /user/hduser/gutenberg are three text books that we will use in this example
 
@@ -53,7 +53,7 @@ Execute: bin/hadoop jar ¤{path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop
 NOTE: You cannot use the same result directory twice, remove it or use a new directory with i.e a number appended to dirname  
   
   
-1.b) Extra assignment: Write a program that counts the occurrence of each word in the files.
+### 1.b) Extra assignment: Write a program that counts the occurrence of each word in the files.
 
 Should produce something like this:
 
@@ -62,7 +62,7 @@ if		434
 or		343 
 
 
-2.a)  Write a program that outputs Logtype and count
+### 2.a)  Write a program that outputs Logtype and count
 
  ERROR	678
  WARN	115150
@@ -73,7 +73,7 @@ There is a logfile that you should use under  /user/hduser/ikealogs
 
  bin/hadoop jar ${path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop.ikealog.LogTypeCounter /user/hduser/ikealogs /user/hduser/{you}/ikealogs-out 
  
-2.b) This assignment includes two MapReduce jobs;
+### 2.b) This assignment includes two MapReduce jobs;
      First, open LogTypePerDateCounter. Finish this program so that it outputs date, logtype and count.
      
     20110519	ERROR	29
@@ -102,6 +102,6 @@ There is a logfile that you should use under  /user/hduser/ikealogs
 	Thu WARN	29 
 	
 	
-2.c) Write a program that can be used to figure out the most problematic class from the logs, probably the one
+### 2.c) Write a program that can be used to figure out the most problematic class from the logs, probably the one
 generating the most errors.
 
