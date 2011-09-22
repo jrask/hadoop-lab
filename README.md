@@ -43,6 +43,22 @@ Open and add the stuff below to your conf/core-site.xml
 	<value>/app/hadoop/tmp</value> 
 	<description>A base for other temporary directories.</description>
 </property>
+
+<property> 
+	<name>hadoop.tmp.dir</name> 
+	<value>/app/hadoop/tmp</value> 
+	<description>A base for other temporary directories.</description> 
+</property>
+
+<property> 
+	<name>fs.default.name</name> 
+	<value>hdfs://master:54310</value> 
+	<description>The name of the default file system. A URI whose scheme and authority determine 
+	the FileSystem implementation. The uri's scheme determines the config property (fs.SCHEME.impl) 
+	naming the FileSystem implementation class. The uri's authority is used to determine the host,
+	port, etc. for a filesystem.</description> 
+</property>
+
 ```
 
 &lt;property&gt;
