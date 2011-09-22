@@ -75,14 +75,16 @@ Open and add the stuff below to your conf/hdfs-site.xml
 
 Open and add the stuff below to your conf/mapred-site.xml
 
-&lt;property&gt;
-  &lt;name&gt;mapred.job.tracker&lt;/name&gt;
-  &lt;value&gt;master:54311&lt;/value&gt;
-  &lt;description&gt;The host and port that the MapReduce job tracker runs
-  at.  If "local", then jobs are run in-process as a single map
-  and reduce task.
-  &lt;/description&gt;
-&lt;/property&gt;
+```xml
+
+<property> 
+	<name>mapred.job.tracker</name> 
+	<value>master:54311</value> 
+	<description>The host and port that the MapReduce job tracker runs at. If "local", then jobs 
+	are run in-process as a single map and reduce task. </description> 
+</property>
+
+```
 
  - Edit .bashrc (.profile)
 
