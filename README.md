@@ -1,3 +1,11 @@
+# Resources
+
+* Home - http://hadoop.apache.org/
+* Documentation - http://hadoop.apache.org/common/docs/r0.20.204.0/
+* Setting up a single node cluster - http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/
+* Map Reduce tutorial - http://hadoop.apache.org/common/docs/stable/mapred_tutorial.html
+* Wiki - http://wiki.apache.org/hadoop/
+
 # Setup
 
 This site http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/
