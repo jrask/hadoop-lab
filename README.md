@@ -241,9 +241,12 @@ STDIN.each_line do |l|
 end
 ```
 
-Try to implement a reducer in your own favorite scripting language. There is no need for the reducer to be implemented in Ruby, just because the mapper is.
+Try to implement a reducer in your own favorite scripting language. There is no need for the reducer to be implemented
+in Ruby just because the mapper is.
 
-There is no hadoop command for the streaming utility. Instead you use a jar that comes with the distribution. The -file argument is used to specify which executables that must be sent to the other cluster nodes. When using already existing scripts and executables this argument can be omitted.
+There is no hadoop command for the streaming utility. Instead you use a jar that comes with the distribution.
+The -file argument is used to specify which executables that must be sent to the other cluster nodes. When
+using already existing scripts and executables this argument can be omitted.
 
 ```shell
 bin/hadoop jar $HADOOP_HOME/contrib/streaming/hadoop-streaming-0.20.204.0.jar -mapper <mapper absolute path> -reducer <reducer absolute path> -file <mapper absolute path> -file <reducer absolute path> -input /user/hduser/gutenberg -output <output dir>
