@@ -16,7 +16,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-import com.jayway.hadoop.gutenberg.RowCounter;
+import com.jayway.hadoop.gutenberg.RowLengthCounter;
 import com.jayway.hadoop.ikealog.LogTypePerWeekdayCounter.LogtypePerDayCounterMapper;
 import com.jayway.hadoop.ikealog.LogTypePerWeekdayCounter.LogtypePerDayCounterReducer;
 import com.jayway.hadoop.util.IkeaLogUtils;
@@ -34,7 +34,7 @@ public class LogTypePerDateCounter {
 public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
 		
 		Job job = new Job();
-		job.setJarByClass(RowCounter.class);
+		job.setJarByClass(RowLengthCounter.class);
 		
 		FileInputFormat.addInputPath(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
