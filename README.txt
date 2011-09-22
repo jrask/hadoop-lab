@@ -2,6 +2,39 @@ TODO - Get more logs or create fake logs
 
 Lab instructions
 
+HDFS
+
+1.) Get to know HDFS
+
+Run ./bin/hadoop to get a list of commands that you can use. Test some of the to get a feeling for
+how it works.
+
+Files are located under /user/hduser
+
+Most frequently used are
+ fs => commands used to manage the filesystem in a similar way as on *ix system.
+ fsck => commands for checking the health of the filesystem
+ 
+I.e ./bin/hadoop fsck /user/hduser -blocks -files
+
+
+Web UI:s
+
+From here you can browse the filesystem, see each datanode, MapReduce status, result of jobs etc. 
+Just browse through it to get a feeling of what you can find.
+
+
+Namenode -  http://master:50070 
+ 
+Jobtracker - http://master:50030
+
+Tasktracker - http//localhost:50060
+
+ But each tasktracker is also available from the jobtracker ui 
+
+
+Map-Reduce Labs
+
 1.a)  Create a program that calculates the maximum length of a row for each file in a directory
 
 Under /user/hduser/gutenberg are three text books that we will use in this example
@@ -15,9 +48,9 @@ Under /user/hduser/gutenberg are three text books that we will use in this examp
  ulysses.txt	73
 
  
-Execute: bin/hadoop jar ¤{path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop.demo.RowCounter /user/hduser/gutenberg /user/hduser/¤{you}/gutenberg-out
+Execute: bin/hadoop jar ¤{path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop.demo.RowCounter /user/hduser/gutenberg /user/hduser/¤{you}/lab1-out
 
-NOTE: You cannot use the same result directory twice, remove it or use a new directory.  
+NOTE: You cannot use the same result directory twice, remove it or use a new directory with i.e a number appended to dirname  
   
   
 1.b) Extra assignment: Write a program that counts the occurrence of each word in the files.
@@ -67,3 +100,8 @@ There is a logfile that you should use under  /user/hduser/ikealogs
 	Sun WARN	1144
 	Thu ERROR	29
 	Thu WARN	29 
+	
+	
+2.c) Write a program that can be used to figure out the most problematic class from the logs, probably the one
+generating the most errors.
+
