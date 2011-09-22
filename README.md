@@ -7,11 +7,11 @@ you follow our setup guide.
 
 Prereq: Java6 + JAVA_HOME satta
 
-#### Skapa en användare som heter hduser (MANDATORY) och en grupp som heter hadoop.
+ - Skapa en användare som heter hduser (MANDATORY) och en grupp som heter hadoop.
   
-#### Ladda ner hadoop 0.20.204.X - current beta version från http://hadoop.apache.org/common/releases.html#Download
+ - Ladda ner hadoop 0.20.204.X - current beta version från http://hadoop.apache.org/common/releases.html#Download
 
-#### Packa upp (installera) hadoop under /usr/local/hadoop-0.20.204.x och gör en symlänk (ln -s hadoop-0.20.204.x hadoop).
+ - Packa upp (installera) hadoop under /usr/local/hadoop-0.20.204.x och gör en symlänk (ln -s hadoop-0.20.204.x hadoop).
     Det är VIKTIGT att hadoop ligger under '/usr/local/hadoop
 
   "Anledningen till att hduser + en symlänk till /usr/local/hadoop (byt ej namn på katalogen) är att
@@ -20,18 +20,18 @@ Prereq: Java6 + JAVA_HOME satta
   
   "Om någon kör vmware/virtualbox så är det viktigt att den konfas så att den kan nås via andra maskiner i klustret"
 
-#### I /usr/local/hadoop/conf/hadoop-env.sh behöver du sätta JAVA_HOME igen.
+ - I /usr/local/hadoop/conf/hadoop-env.sh behöver du sätta JAVA_HOME igen.
 
-#### Skapa katalogen /app/hadoop/tmp och ge hduser access till tmp mappen. Du kan även använda tex /tmp/hadoop men isf
+ - Skapa katalogen /app/hadoop/tmp och ge hduser access till tmp mappen. Du kan även använda tex /tmp/hadoop men isf
    får du ej glömma att ändra i conf/core-site.xml nedan.
    
    $ sudo mkdir -p /app/hadoop/tmp
    $ sudo chown hduser:hadoop /app/hadoop/tmp
    $ sudo chmod 750 /app/hadoop/tmp
 
-#### Konfiguration
+ -  Konfiguration
 
-- Open and add the stuff below to your conf/core-site.xml
+Open and add the stuff below to your conf/core-site.xml
 
 <property>
   <name>hadoop.tmp.dir</name>
@@ -50,7 +50,7 @@ Prereq: Java6 + JAVA_HOME satta
 </property>
 
 
-- Open and add the stuff below to your conf/hdfs-site.xml
+Open and add the stuff below to your conf/hdfs-site.xml
 
 <property>
   <name>dfs.replication</name>
@@ -70,7 +70,7 @@ Prereq: Java6 + JAVA_HOME satta
 </property>
 
 
-- Open and add the stuff below to your conf/mapred-site.xml
+Open and add the stuff below to your conf/mapred-site.xml
 
 <property>
   <name>mapred.job.tracker</name>
@@ -81,13 +81,13 @@ Prereq: Java6 + JAVA_HOME satta
   </description>
 </property>
 
-#### Edit .bashrc (.profile)
+ - Edit .bashrc (.profile)
 
 export HADOOP_HOME=/usr/local/hadoop
 export JAVA_HOME=/usr/lib/jvm/java-6-sun (you should have done this already)
 export PATH=$PATH:$HADOOP_HOME/bin
 
-#### Rest of setup is Work In Progress. 
+ - Rest of setup is Work In Progress. 
 
 The final setup will be done during friday and saturday. If you are at the office and have done all
 steps please come by me.
