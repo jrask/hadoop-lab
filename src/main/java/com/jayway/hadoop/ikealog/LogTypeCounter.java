@@ -62,13 +62,9 @@ public static void main(String[] args) throws IOException, InterruptedException,
 				Mapper<LongWritable, Text, Text, IntWritable>.Context context)
 				throws IOException, InterruptedException {
 
+			//TODO: Use util.IkeaLogUtils.entry() to get the logType (WARN, ERROR, DEBUG, etc)
+			String logType = null;
 			
-			
-			MatchResult result = IkeaLogUtils.entry(key, row);			
-			if(result == null) {
-				return;
-			}	
-			String logType = result.group(3);
 			context.write(new Text(logType), new IntWritable(1));
 		};
 
@@ -85,13 +81,11 @@ public static void main(String[] args) throws IOException, InterruptedException,
 				Reducer<Text, IntWritable, Text, IntWritable>.Context context)
 				throws IOException, InterruptedException {
 
-			int maxValue = 0;
+			int total = 0;
 
-			for (IntWritable count : arg1) {
-				maxValue += count.get();
-			}
+			//TODO: Calculate the total number of occurences of each logType
 
-			context.write(logType, new IntWritable(maxValue));
+			context.write(logType, new IntWritable(total));
 		};
 
 	}
