@@ -7,11 +7,11 @@ you follow our setup guide.
 
 Prereq: Java6 + JAVA_HOME satta
 
-1. Skapa en användare som heter hduser (MANDATORY) och en grupp som heter hadoop.
+ - Skapa en användare som heter hduser (MANDATORY) och en grupp som heter hadoop.
   
-2. Ladda ner hadoop 0.20.204.X - current beta version från http://hadoop.apache.org/common/releases.html#Download
+ - Ladda ner hadoop 0.20.204.X - current beta version från http://hadoop.apache.org/common/releases.html#Download
 
-3. Packa upp (installera) hadoop under /usr/local/hadoop-0.20.204.x och gör en symlänk (ln -s hadoop-0.20.204.x hadoop).
+ - Packa upp (installera) hadoop under /usr/local/hadoop-0.20.204.x och gör en symlänk (ln -s hadoop-0.20.204.x hadoop).
     Det är VIKTIGT att hadoop ligger under '/usr/local/hadoop
 
   "Anledningen till att hduser + en symlänk till /usr/local/hadoop (byt ej namn på katalogen) är att
@@ -20,74 +20,81 @@ Prereq: Java6 + JAVA_HOME satta
   
   "Om någon kör vmware/virtualbox så är det viktigt att den konfas så att den kan nås via andra maskiner i klustret"
 
-4. I /usr/local/hadoop/conf/hadoop-env.sh behöver du sätta JAVA_HOME igen.
+ - I /usr/local/hadoop/conf/hadoop-env.sh behöver du sätta JAVA_HOME igen.
 
-5. Skapa katalogen /app/hadoop/tmp och ge hduser access till tmp mappen. Du kan även använda tex /tmp/hadoop men isf
+ - Skapa katalogen /app/hadoop/tmp och ge hduser access till tmp mappen. Du kan även använda tex /tmp/hadoop men isf
    får du ej glömma att ändra i conf/core-site.xml nedan.
    
    $ sudo mkdir -p /app/hadoop/tmp
+   
    $ sudo chown hduser:hadoop /app/hadoop/tmp
+   
    $ sudo chmod 750 /app/hadoop/tmp
 
-6. Konfiguration
+ -  Konfiguration
 
-6.1 Open and add the stuff below to your conf/core-site.xml
+Open and add the stuff below to your conf/core-site.xml
 
-<property>
-  <name>hadoop.tmp.dir</name>
-  <value>/app/hadoop/tmp</value>
-  <description>A base for other temporary directories.</description>
-</property>
+&lt;property&gt;
+  &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+  &lt;value&gt;/app/hadoop/tmp&lt;/value&gt;
+  &lt;description&gt;A base for other temporary directories.&lt;/description&gt;
+&lt;/property&gt;
 
-<property>
-  <name>fs.default.name</name>
-  <value>hdfs://master:54310</value>
-  <description>The name of the default file system.  A URI whose
+&lt;property&gt;
+  &lt;name&gt;fs.default.name&lt;/name&gt;
+  &lt;value&gt;hdfs://master:54310&lt;/value&gt;
+  &lt;description&gt;The name of the default file system.  A URI whose
   scheme and authority determine the FileSystem implementation.  The
   uri's scheme determines the config property (fs.SCHEME.impl) naming
   the FileSystem implementation class.  The uri's authority is used to
-  determine the host, port, etc. for a filesystem.</description>
-</property>
+  determine the host, port, etc. for a filesystem.&lt;/description&gt;
+&lt;/property&gt;
 
 
-6.2 Open and add the stuff below to your conf/hdfs-site.xml
+Open and add the stuff below to your conf/hdfs-site.xml
 
-<property>
-  <name>dfs.replication</name>
-  <value>2</value>
-  <description>Default block replication.
+&lt;property&gt;
+  &lt;name&gt;dfs.replication&lt;/name&gt;
+  &lt;value&gt;2&lt;/value&gt;
+  &lt;description&gt;Default block replication.
   The actual number of replications can be specified when the file is created.
   The default is used if replication is not specified in create time.
-  </description>
-</property>
-<property>
-   <name>dfs.block.size</name>
-   <value>10240000</value>
-</property>
-<property>
-   <name>dfs.http.address</name>
-   <value>master:50070</value>
-</property>
+  &lt;/description&gt;
+&lt;/property&gt;
+&lt;property&gt;
+   &lt;name&gt;dfs.block.size&lt;/name&gt;
+   &lt;value&gt;10240000&lt;/value&gt;
+&lt;/property&gt;
+&lt;property&gt;
+   &lt;name&gt;dfs.http.address&lt;/name&gt;
+   &lt;value&gt;master:50070&lt;/value&gt;
+&lt;/property&gt;
 
 
-6.3 Open and add the stuff below to your conf/mapred-site.xml
+Open and add the stuff below to your conf/mapred-site.xml
 
-<property>
-  <name>mapred.job.tracker</name>
-  <value>master:54311</value>
-  <description>The host and port that the MapReduce job tracker runs
+&lt;property&gt;
+  &lt;name&gt;mapred.job.tracker&lt;/name&gt;
+  &lt;value&gt;master:54311&lt;/value&gt;
+  &lt;description&gt;The host and port that the MapReduce job tracker runs
   at.  If "local", then jobs are run in-process as a single map
   and reduce task.
-  </description>
-</property>
+  &lt;/description&gt;
+&lt;/property&gt;
 
-7. Edit .bashrc (.profile)
+ - Edit .bashrc (.profile)
 
 export HADOOP_HOME=/usr/local/hadoop
+
 export JAVA_HOME=/usr/lib/jvm/java-6-sun (you should have done this already)
+
 export PATH=$PATH:$HADOOP_HOME/bin
 
-8. Work In Progress
+ - Rest of setup is Work In Progress. 
+
+The final setup will be done during friday and saturday. If you are at the office and have done all
+steps please come by me.
 
 
 # All lab instructions are in progress
@@ -103,8 +110,8 @@ how it works.
 Files are located under /user/hduser
 
 Most frequently used are
- fs => commands used to manage the filesystem in a similar way as on *ix system.
- fsck => commands for checking the health of the filesystem
+ fs =&gt; commands used to manage the filesystem in a similar way as on *ix system.
+ fsck =&gt; commands for checking the health of the filesystem
  
 I.e ./bin/hadoop fsck /user/hduser -blocks -files
 
