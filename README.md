@@ -32,6 +32,13 @@ sudo chown hduser:hadoop /app/hadoop/tmp
    
 sudo chmod 750 /app/hadoop/tmp
 ```
+  - Edit .bashrc (.profile)
+
+export HADOOP_HOME=/usr/local/hadoop
+
+export JAVA_HOME=/usr/lib/jvm/java-6-sun (you should have done this already)
+
+export PATH=$PATH:$HADOOP_HOME/bin
 
  -  Konfiguration
 
@@ -85,14 +92,6 @@ Open and add the stuff below to your conf/mapred-site.xml
 </property>
 
 ```
-
- - Edit .bashrc (.profile)
-
-export HADOOP_HOME=/usr/local/hadoop
-
-export JAVA_HOME=/usr/lib/jvm/java-6-sun (you should have done this already)
-
-export PATH=$PATH:$HADOOP_HOME/bin
 
  - Rest of setup is Work In Progress. 
 
