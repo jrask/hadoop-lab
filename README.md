@@ -181,7 +181,7 @@ NOTE: You cannot use the same result directory twice, remove it or use a new dir
 Use command utils or Web UI:s to verify your results
 
   
-### 1.b) Extra assignment
+### 1.b) Extra assignment (Skip this, goto next)
 
 Write a program that counts the occurrence of each word in the files.
 
