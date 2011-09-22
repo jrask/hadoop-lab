@@ -52,6 +52,11 @@ export PATH=$PATH:$HADOOP_HOME/bin
 
  -  Konfiguration
 
+Instead of copying these xml snippets, you can make a symbolic link from ./hadoop/conf to ./hadoop-lab/conf-git.
+The directory conf-git contains all conf files that you need to get started and if we do any changes you simply
+have to pull for changes so that is the recommended way to do it. Since you may use git with a different user
+you might have to copy the conf-git directory and change owner of the directory.
+
 Open and add the stuff below to your conf/core-site.xml
 
 ```xml
