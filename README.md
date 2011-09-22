@@ -160,19 +160,21 @@ Tasktracker - http://localhost:50060 (eller n�gon annan dator i klustret, du n
 
 Under /user/hduser/gutenberg are three text books that we will use in this example
 
- - Open com.jayway.hadoop.demo.RowCounter.java
+Open com.jayway.hadoop.demo.RowLengthCounter.java and follow the instructions.
  
- Finish the mapper and reducer code so that it produces this output:
- 
- notebooks.txt	95
- outline_of_science.txt	80
- ulysses.txt	73
+Finish the mapper and reducer code so that it produces this output:
 
- 
-Execute: bin/hadoop jar �{path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop.demo.RowCounter /user/hduser/gutenberg /user/hduser/�{you}/lab1-out
+	notebooks.txt	95
+	outline_of_science.txt	80
+	ulysses.txt	73
 
+
+Execute: bin/hadoop jar ${path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop.demo.RowLengthCounter /user/hduser/gutenberg /user/hduser/${you}/lab1-out
+ 
 NOTE: You cannot use the same result directory twice, remove it or use a new directory with i.e a number appended to dirname  
-  
+
+Use command utils or Web UI:s to verify your results
+
   
 ### 1.b) Extra assignment: Write a program that counts the occurrence of each word in the files.
 
