@@ -165,9 +165,9 @@ NOTE: You cannot use the same result directory twice, remove it or use a new dir
 
 Should produce something like this:
 
-and		345
-if		434
-or		343 
+	and		345
+	if		434
+	or		343 
 
 
 ### 2.a)  Write a program that outputs Logtype and count
