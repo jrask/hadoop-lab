@@ -52,68 +52,70 @@ export PATH=$PATH:$HADOOP_HOME/bin
 
  -  Konfiguration
 
-Open and add the stuff below to your conf/core-site.xml
+I have checked in a conf directory that is a replacement for the ./hadoop/conf directory. 
 
-```xml
-<property> 
-	<name>hadoop.tmp.dir</name> 
-	<value>/app/hadoop/tmp</value> 
-	<description>A base for other temporary directories.</description> 
-</property>
+Remove/Rename ./hadoop/conf directory
 
-<property> 
-	<name>fs.default.name</name> 
-	<value>hdfs://master:54310</value> 
-	<description>The name of the default file system. A URI whose scheme and authority determine 
-	the FileSystem implementation. The uri's scheme determines the config property (fs.SCHEME.impl) 
-	naming the FileSystem implementation class. The uri's authority is used to determine the host,
-	port, etc. for a filesystem.</description> 
-</property>
+Make a symbolic link from hadoop-lab/conf-git to ./hadoop/conf. If you use another user than hduser for git,use
 
+```shell
+sudo cp -a conf-git/ /usr/local/conf-git
+sudo chown -R hduser:staff /usr/local/conf-git/
+cd /usr/local/hadoop
+ln -s ../conf-git conf
 ```
 
-Open and add the stuff below to your conf/hdfs-site.xml
-
-```xml
-<property>
-	<name>dfs.replication</name> 
-	<value>2</value> 
-	<description>Default block replication. The actual number of replications can be specified
-	when the file is created. The default is used if replication is not specified in create time.</description> 
-</property> 
-<property> 
-	<name>dfs.block.size</name> 
-	<value>10240000</value> </property> 
-	<property> <name>dfs.http.address</name>
-	<value>master:50070</value>
-</property>
-
-```
-
-Open and add the stuff below to your conf/mapred-site.xml
-
-```xml
-
-<property> 
-	<name>mapred.job.tracker</name> 
-	<value>master:54311</value> 
-	<description>The host and port that the MapReduce job tracker runs at. If "local", then jobs 
-	are run in-process as a single map and reduce task. </description> 
-</property>
-
-```
 
  - Add my (johans) public key to hdusers .ssh/authorized_keys
+ - NOTE: To make it work when you start the cluster you MUST create and add your hduser key as well
 
 ```shell
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDq/nCxgEsn1MgAevEopbbTnCET9wxqf9iyv0FbisFw/XgXAAk4jOdDPknxYlcNwNt80dC+nyOoqtMOzgHhBPR53h6IJz8aVx0+R/z1igU/MuBJLQ0XpkTNVwcNiN+KeDFILq6I8YGe0ekKgX1Wicdk4WvxjQK4rOrK7affhILbIqZEV6uWxr/DzY202AASPuwJWlPq9ZVKAIAD+E0odDjo+vNGWaA9iW0ifZPVcrAPE/iEMKtL2fptNa4uzFpDHE82uGmt+TmVubhTTdrXm6dDeqV7IX8l8iOm6nTZKF7gVxCnfEEgeGpsJaHLQUHG8ibPTS27/1BchdtmkXVTWKqP hduser@rask.lan
 ```
 
-That should be it! unfortunately you cannot test your installation until we meet this weekend. It would be great
-if we could finish some of your computers during friday.
+Finally, sudo nano /etc/hosts and add
 
-The next parts involve adding slave nodes to /etc/hosts and to hadoop/conf/slaves but we have to do this on friday
-and saturday. If you would like to verify your installation, please come by me.
+```shell
+sudo nano /etc/hosts and add
+
+your_ip	master
+```
+
+You should now be able to start hadoop on your computer with
+
+```shell
+cd /usr/local/hadoop
+
+rask:hadoop hduser$ bin/start-all.sh 
+starting namenode, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-namenode-rask.local.out
+master: starting datanode, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-datanode-rask.local.out
+master: starting secondarynamenode, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-secondarynamenode-rask.local.out
+starting jobtracker, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-jobtracker-rask.local.out
+master: starting tasktracker, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-tasktracker-rask.local.out
+
+rask:hadoop hduser$ jps
+19387 Jps
+19207 SecondaryNameNode
+19361 TaskTracker
+19123 DataNode
+19036 NameNode
+19274 JobTracker
+
+```
+
+Stop cluster
+
+```shell
+rask:hadoop hduser$ bin/stop-all.sh 
+stopping jobtracker
+master: stopping tasktracker
+stopping namenode
+master: stopping datanode
+master: stopping secondarynamenode
+
+```
+
+Do not worry if it does not work, we will solve the rest on friday!
 
 
 # All lab instructions are in progress
