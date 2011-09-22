@@ -56,6 +56,7 @@ Open and add the stuff below to your conf/core-site.xml
 ```
 
 Open and add the stuff below to your conf/hdfs-site.xml
+
 ```xml
 <property>
 	<name>dfs.replication</name> 
@@ -69,6 +70,7 @@ Open and add the stuff below to your conf/hdfs-site.xml
 	<property> <name>dfs.http.address</name>
 	<value>master:50070</value>
 </property>
+
 ```
 
 Open and add the stuff below to your conf/mapred-site.xml
