@@ -103,6 +103,18 @@ rask:hadoop hduser$ jps
 
 ```
 
+Stop cluster
+
+```shell
+rask:hadoop hduser$ bin/stop-all.sh 
+stopping jobtracker
+master: stopping tasktracker
+stopping namenode
+master: stopping datanode
+master: stopping secondarynamenode
+
+```
+
 Do not worry if it does not work, we will solve the rest on friday!
 
 
