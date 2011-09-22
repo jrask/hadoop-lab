@@ -52,61 +52,19 @@ export PATH=$PATH:$HADOOP_HOME/bin
 
  -  Konfiguration
 
-Instead of copying these xml snippets, you can make a symbolic link from ./hadoop/conf to ./hadoop-lab/conf-git.
-The directory conf-git contains all conf files that you need to get started and if we do any changes you simply
-have to pull for changes so that is the recommended way to do it. Since you may use git with a different user
-you might have to copy the conf-git directory and change owner of the directory.
+I have checked in a conf directory that is a replacement for the ./hadoop/conf directory. 
 
-Open and add the stuff below to your conf/core-site.xml
+Remove/Rename ./hadoop/conf directory
 
-```xml
-<property> 
-	<name>hadoop.tmp.dir</name> 
-	<value>/app/hadoop/tmp</value> 
-	<description>A base for other temporary directories.</description> 
-</property>
+Make a symbolic link from hadoop-lab/conf-git to ./hadoop/conf. If you use another user than hduser for git,use
 
-<property> 
-	<name>fs.default.name</name> 
-	<value>hdfs://master:54310</value> 
-	<description>The name of the default file system. A URI whose scheme and authority determine 
-	the FileSystem implementation. The uri's scheme determines the config property (fs.SCHEME.impl) 
-	naming the FileSystem implementation class. The uri's authority is used to determine the host,
-	port, etc. for a filesystem.</description> 
-</property>
-
+```shell
+sudo cp -a conf-git/ /usr/local/conf-git
+sudo chown -R hduser:staff /usr/local/conf-git/
+cd /usr/local/hadoop
+ln -s ../conf-git conf
 ```
 
-Open and add the stuff below to your conf/hdfs-site.xml
-
-```xml
-<property>
-	<name>dfs.replication</name> 
-	<value>2</value> 
-	<description>Default block replication. The actual number of replications can be specified
-	when the file is created. The default is used if replication is not specified in create time.</description> 
-</property> 
-<property> 
-	<name>dfs.block.size</name> 
-	<value>10240000</value> </property> 
-	<property> <name>dfs.http.address</name>
-	<value>master:50070</value>
-</property>
-
-```
-
-Open and add the stuff below to your conf/mapred-site.xml
-
-```xml
-
-<property> 
-	<name>mapred.job.tracker</name> 
-	<value>master:54311</value> 
-	<description>The host and port that the MapReduce job tracker runs at. If "local", then jobs 
-	are run in-process as a single map and reduce task. </description> 
-</property>
-
-```
 
  - Add my (johans) public key to hdusers .ssh/authorized_keys
 
