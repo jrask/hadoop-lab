@@ -67,16 +67,41 @@ ln -s ../conf-git conf
 
 
  - Add my (johans) public key to hdusers .ssh/authorized_keys
+ - NOTE: To make it work when you start the cluster you MUST create and add your hduser key as well
 
 ```shell
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDq/nCxgEsn1MgAevEopbbTnCET9wxqf9iyv0FbisFw/XgXAAk4jOdDPknxYlcNwNt80dC+nyOoqtMOzgHhBPR53h6IJz8aVx0+R/z1igU/MuBJLQ0XpkTNVwcNiN+KeDFILq6I8YGe0ekKgX1Wicdk4WvxjQK4rOrK7affhILbIqZEV6uWxr/DzY202AASPuwJWlPq9ZVKAIAD+E0odDjo+vNGWaA9iW0ifZPVcrAPE/iEMKtL2fptNa4uzFpDHE82uGmt+TmVubhTTdrXm6dDeqV7IX8l8iOm6nTZKF7gVxCnfEEgeGpsJaHLQUHG8ibPTS27/1BchdtmkXVTWKqP hduser@rask.lan
 ```
 
-That should be it! unfortunately you cannot test your installation until we meet this weekend. It would be great
-if we could finish some of your computers during friday.
+Finally, sudo nano /etc/hosts and add
 
-The next parts involve adding slave nodes to /etc/hosts and to hadoop/conf/slaves but we have to do this on friday
-and saturday. If you would like to verify your installation, please come by me.
+```shell
+sudo nano /etc/hosts and add
+
+your_ip	master
+```
+
+You should now be able to start hadoop on your computer with
+```shell
+cd /usr/local/hadoop
+
+rask:hadoop hduser$ bin/start-all.sh 
+starting namenode, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-namenode-rask.local.out
+master: starting datanode, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-datanode-rask.local.out
+master: starting secondarynamenode, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-secondarynamenode-rask.local.out
+starting jobtracker, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-jobtracker-rask.local.out
+master: starting tasktracker, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-tasktracker-rask.local.out
+
+rask:hadoop hduser$ jps
+19387 Jps
+19207 SecondaryNameNode
+19361 TaskTracker
+19123 DataNode
+19036 NameNode
+19274 JobTracker
+```
+
+Do not worry if it does not work, we will solve the rest on friday!
 
 
 # All lab instructions are in progress
