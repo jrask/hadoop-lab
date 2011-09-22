@@ -169,8 +169,12 @@ Finish the mapper and reducer code so that it produces this output:
 	ulysses.txt	73
 
 
-Execute: bin/hadoop jar ${path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop.demo.RowLengthCounter /user/hduser/gutenberg /user/hduser/${you}/lab1-out
- 
+To run the job (due to permissions you might have to cp the jar file and chmod it)
+```shell
+mvn clean install
+bin/hadoop jar ${path.to}/hadoop-lab-1.0-SNAPSHOT.jar com.jayway.hadoop.demo.RowLengthCounter /user/hduser/gutenberg /user/hduser/${you}/lab1-out
+```
+
 NOTE: You cannot use the same result directory twice, remove it or use a new directory with i.e a number appended to dirname  
 
 Use command utils or Web UI:s to verify your results
