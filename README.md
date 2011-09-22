@@ -118,8 +118,10 @@ how it works.
 Files are located under /user/hduser
 
 Most frequently used are
+
  fs =&gt; commands used to manage the filesystem in a similar way as on *ix system.
- fsck =&gt; commands for checking the health of the filesystem
+
+fsck =&gt; commands for checking the health of the filesystem
  
 I.e ./bin/hadoop fsck /user/hduser -blocks -files
 
