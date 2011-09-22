@@ -101,6 +101,9 @@ Open and add the stuff below to your conf/mapred-site.xml
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDq/nCxgEsn1MgAevEopbbTnCET9wxqf9iyv0FbisFw/XgXAAk4jOdDPknxYlcNwNt80dC+nyOoqtMOzgHhBPR53h6IJz8aVx0+R/z1igU/MuBJLQ0XpkTNVwcNiN+KeDFILq6I8YGe0ekKgX1Wicdk4WvxjQK4rOrK7affhILbIqZEV6uWxr/DzY202AASPuwJWlPq9ZVKAIAD+E0odDjo+vNGWaA9iW0ifZPVcrAPE/iEMKtL2fptNa4uzFpDHE82uGmt+TmVubhTTdrXm6dDeqV7IX8l8iOm6nTZKF7gVxCnfEEgeGpsJaHLQUHG8ibPTS27/1BchdtmkXVTWKqP hduser@rask.lan
 ```
 
+That should be it! unfortunately you cannot test your installation until we meet this weekend. It would be great
+if we could finish some of your computers during friday.
+
 The next parts involve adding slave nodes to /etc/hosts and to hadoop/conf/slaves but we have to do this on friday
 and saturday. If you would like to verify your installation, please come by me.
 
