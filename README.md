@@ -55,42 +55,21 @@ Open and add the stuff below to your conf/core-site.xml
 
 ```
 
-&lt;property&gt;
-  &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
-  &lt;value&gt;/app/hadoop/tmp&lt;/value&gt;
-  &lt;description&gt;A base for other temporary directories.&lt;/description&gt;
-&lt;/property&gt;
-
-&lt;property&gt;
-  &lt;name&gt;fs.default.name&lt;/name&gt;
-  &lt;value&gt;hdfs://master:54310&lt;/value&gt;
-  &lt;description&gt;The name of the default file system.  A URI whose
-  scheme and authority determine the FileSystem implementation.  The
-  uri's scheme determines the config property (fs.SCHEME.impl) naming
-  the FileSystem implementation class.  The uri's authority is used to
-  determine the host, port, etc. for a filesystem.&lt;/description&gt;
-&lt;/property&gt;
-
-
 Open and add the stuff below to your conf/hdfs-site.xml
-
-&lt;property&gt;
-  &lt;name&gt;dfs.replication&lt;/name&gt;
-  &lt;value&gt;2&lt;/value&gt;
-  &lt;description&gt;Default block replication.
-  The actual number of replications can be specified when the file is created.
-  The default is used if replication is not specified in create time.
-  &lt;/description&gt;
-&lt;/property&gt;
-&lt;property&gt;
-   &lt;name&gt;dfs.block.size&lt;/name&gt;
-   &lt;value&gt;10240000&lt;/value&gt;
-&lt;/property&gt;
-&lt;property&gt;
-   &lt;name&gt;dfs.http.address&lt;/name&gt;
-   &lt;value&gt;master:50070&lt;/value&gt;
-&lt;/property&gt;
-
+```xml
+<property>
+	<name>dfs.replication</name> 
+	<value>2</value> 
+	<description>Default block replication. The actual number of replications can be specified
+	when the file is created. The default is used if replication is not specified in create time.</description> 
+</property> 
+<property> 
+	<name>dfs.block.size</name> 
+	<value>10240000</value> </property> 
+	<property> <name>dfs.http.address</name>
+	<value>master:50070</value>
+</property>
+```
 
 Open and add the stuff below to your conf/mapred-site.xml
 
