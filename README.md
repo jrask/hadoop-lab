@@ -117,8 +117,6 @@ master: stopping secondarynamenode
 
 Do not worry if it does not work, we will solve the rest on friday!
 
-
-# All lab instructions are in progress
 #Lab instructions
 
 ##HDFS
