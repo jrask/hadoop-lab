@@ -1,9 +1,8 @@
-TODO - Get more logs or create fake logs
-
 # Setup
 
 This site http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/
-has a great step by step guide to how you configure your system. 
+has a great step by step guide to how you configure your system which may be helpful to look at when
+you follow our setup guide.
 
 
 Prereq: Java6 + JAVA_HOME satta
@@ -81,6 +80,15 @@ Prereq: Java6 + JAVA_HOME satta
   and reduce task.
   </description>
 </property>
+
+7. Edit .bashrc (.profile)
+
+export HADOOP_HOME=/usr/local/hadoop
+export JAVA_HOME=/usr/lib/jvm/java-6-sun (you should have done this already)
+export PATH=$PATH:$HADOOP_HOME/bin
+
+8. Work In Progress
+
 
 #Lab instructions
 
