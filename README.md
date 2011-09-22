@@ -82,6 +82,7 @@ your_ip	master
 ```
 
 You should now be able to start hadoop on your computer with
+
 ```shell
 cd /usr/local/hadoop
 
@@ -99,6 +100,7 @@ rask:hadoop hduser$ jps
 19123 DataNode
 19036 NameNode
 19274 JobTracker
+
 ```
 
 Do not worry if it does not work, we will solve the rest on friday!
