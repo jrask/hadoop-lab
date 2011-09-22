@@ -230,8 +230,16 @@ and calculate the number of errors and warnings per weekday.
 	
 Use the output file (part-r-00000) from LogTypePerDateCounter as input for this job.
 
-### 2.c) Write a program that can be used to figure out the most problematic class from the logs, probably the one
-generating the most errors.
+### 2.c) Write a program that can be used to figure out the most problematic class 
+
+The program should output each class with the number of errors
+
+	com.somepackage.SomeClass	345
+	com.somepackage.SomeClass2	200
+	...
+	...
+	
+There is no template for this assignment so you have to create a new och change an existing.
 
 ### 3.a) Count the number of words with the Hadoop Streaming utility
 
