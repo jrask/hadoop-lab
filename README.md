@@ -26,7 +26,9 @@ Prereq: Java6 + JAVA_HOME satta
    får du ej glömma att ändra i conf/core-site.xml nedan.
    
    $ sudo mkdir -p /app/hadoop/tmp
+   
    $ sudo chown hduser:hadoop /app/hadoop/tmp
+   
    $ sudo chmod 750 /app/hadoop/tmp
 
  -  Konfiguration
@@ -84,7 +86,9 @@ Open and add the stuff below to your conf/mapred-site.xml
  - Edit .bashrc (.profile)
 
 export HADOOP_HOME=/usr/local/hadoop
+
 export JAVA_HOME=/usr/lib/jvm/java-6-sun (you should have done this already)
+
 export PATH=$PATH:$HADOOP_HOME/bin
 
  - Rest of setup is Work In Progress. 
