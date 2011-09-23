@@ -70,20 +70,17 @@ public static void main(String[] args) throws IOException, InterruptedException,
 				Mapper<LongWritable, Text, Text, IntWritable>.Context context)
 				throws IOException, InterruptedException {
 
-			Calendar cal = Calendar.getInstance();
-			String[] dateLogtypeAndCount = row.toString().split("\t");
+			//TODO: get the date
 			Date date = null;
-			try {
-				date = format.parse(dateLogtypeAndCount[0]);
-			} catch (ParseException e) {
-				e.printStackTrace();
-				return;
-			}
-			cal.setTime(date);
-			String logType = dateLogtypeAndCount[1];
-			int count = Integer.parseInt(dateLogtypeAndCount[2]);
+
+			//TODO: get the logtype
+			String logType = null;
+
+			//TODO - get the count
+			int count = Integer.MIN_VALUE;
 			
-			context.write(new Text(weekdayFormat.format(date) + " " + logType), new IntWritable(count));
+			//TODO - Output in format "weekday logType	count" , i.e => "FRI WARN	123"
+			context.write(new Text(""), new IntWritable(count));
 		};
 	}
 	
@@ -95,13 +92,11 @@ public static void main(String[] args) throws IOException, InterruptedException,
 				Reducer<Text, IntWritable, Text, IntWritable>.Context context)
 				throws IOException, InterruptedException {
 
-			int maxValue = 0;
+			int count = 0;
 
-			for (IntWritable count : arg1) {
-				maxValue += count.get();
-			}
+			//TODO - Calculate the count per weekday
 
-			context.write(weekday, new IntWritable(maxValue));
+			context.write(weekday, new IntWritable(count));
 		};
 
 	}

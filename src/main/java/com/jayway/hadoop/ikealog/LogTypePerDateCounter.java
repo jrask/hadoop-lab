@@ -53,27 +53,20 @@ public static void main(String[] args) throws IOException, InterruptedException,
 			Mapper<LongWritable, Text, Text, IntWritable> {
 
 
-		SimpleDateFormat format2 = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 
 		protected void map(LongWritable key, Text row,
 				Mapper<LongWritable, Text, Text, IntWritable>.Context context)
 				throws IOException, InterruptedException {
 
-			MatchResult result = IkeaLogUtils.entry(key, row);
-			if (result == null) {
-				return;
-			}
 
+			//TODO: Use util.IkeaLogUtils to get the logType
+			String logType = null;
+			
+			//TODO: Parse into a date
 			Date date = null;
-			try {
-				date = IkeaLogUtils.format.parse(result.group(1));
-			} catch (ParseException e) {
-				e.printStackTrace();
-				return;
-			}
 
-			String logType = result.group(3);
-			context.write(new Text(format2.format(date) + "\t" + logType),
+			context.write(new Text(format.format(date) + "\t" + logType),
 					new IntWritable(1));
 		};
 	}
@@ -85,13 +78,11 @@ public static void main(String[] args) throws IOException, InterruptedException,
 				Reducer<Text, IntWritable, Text, IntWritable>.Context context)
 				throws IOException, InterruptedException {
 
-			int maxValue = 0;
+			int count = 0;
 
-			for (IntWritable count : arg1) {
-				maxValue += count.get();
-			}
+			//TODO: Calculate count per date
 
-			context.write(logType, new IntWritable(maxValue));
+			context.write(logType, new IntWritable(count));
 		};
 
 	}
