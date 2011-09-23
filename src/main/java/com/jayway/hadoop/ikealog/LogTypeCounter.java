@@ -1,7 +1,6 @@
 package com.jayway.hadoop.ikealog;
 
 import java.io.IOException;
-import java.util.regex.MatchResult;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
@@ -14,7 +13,6 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import com.jayway.hadoop.gutenberg.RowLengthCounter;
-import com.jayway.hadoop.util.IkeaLogUtils;
 
 
 /**
