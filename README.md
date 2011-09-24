@@ -81,41 +81,23 @@ sudo nano /etc/hosts and add
 your_ip	master
 ```
 
-You should now be able to start hadoop on your computer with
+You should now be able to start a datanode and tasktracker on your computer with
 
 ```shell
 cd /usr/local/hadoop
 
-rask:hadoop hduser$ bin/start-all.sh 
-starting namenode, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-namenode-rask.local.out
-master: starting datanode, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-datanode-rask.local.out
-master: starting secondarynamenode, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-secondarynamenode-rask.local.out
-starting jobtracker, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-jobtracker-rask.local.out
-master: starting tasktracker, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-tasktracker-rask.local.out
+rask:hadoop hduser$ bin/hadoop-daemon.sh start datanode
+starting datanode, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-datanode-rask.local.out
+
+rask:hadoop hduser$ bin/hadoop-daemon.sh start tasktracker
+starting tasktracker, logging to /usr/local/hadoop-0.20.204.0/libexec/../logs/hadoop-hduser-tasktracker-rask.local.out
 
 rask:hadoop hduser$ jps
-19387 Jps
-19207 SecondaryNameNode
-19361 TaskTracker
-19123 DataNode
-19036 NameNode
-19274 JobTracker
+3767 DataNode
+3850 TaskTracker
+3939 Jps
 
 ```
-
-Stop cluster
-
-```shell
-rask:hadoop hduser$ bin/stop-all.sh 
-stopping jobtracker
-master: stopping tasktracker
-stopping namenode
-master: stopping datanode
-master: stopping secondarynamenode
-
-```
-
-Do not worry if it does not work, we will solve the rest on friday!
 
 #Lab instructions
 
