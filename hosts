@@ -1,0 +1,24 @@
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1	localhost
+255.255.255.255	broadcasthost
+::1             localhost 
+fe80::1%lo0	localhost
+
+# Hadoop stuff
+#10.0.112.99	master
+#10.0.112.141	slave1 nil
+#10.0.112.128	slave2 rasks-mac-ubuntu64
+#10.0.112.51	slave2
+
+#192.168.1.66    master
+#192.168.1.66   slave.xps
+
+78.64.232.242	master
+78.75.73.230	slave1
+78.64.232.195	slave2
+78.64.232.246   ulriks-mac
