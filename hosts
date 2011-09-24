@@ -19,6 +19,10 @@ fe80::1%lo0	localhost
 #192.168.1.66   slave.xps
 
 78.64.232.242	master
-78.75.73.230	slave1
-78.64.232.195	slave2
+78.75.73.230	slave1 nil
+78.64.232.195	slave2 
 78.64.232.246   ulriks-mac
+78.75.73.229    mha-hadoop
+78.75.73.201	jn
+78.64.232.252 	host-78-64-232-242.homerun.telia.com
+
