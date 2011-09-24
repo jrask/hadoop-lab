@@ -56,7 +56,7 @@ I have checked in a conf directory that is a replacement for the ./hadoop/conf d
 
 Remove/Rename ./hadoop/conf directory
 
-Make a symbolic link from hadoop-lab/conf-git to ./hadoop/conf. If you use another user than hduser for git,use
+Make a symbolic link from /usr/local/hadoop/conf to hadoop-lab/conf-git. If you use another user than hduser for git,use
 
 ```shell
 sudo cp -a conf-git/ /usr/local/conf-git
